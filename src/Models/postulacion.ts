@@ -7,6 +7,6 @@ export class Postulacion {
     public id: number,
     public fechaPostulacion: Date,
     public estudiante: Estudiante,
-    public estado: string[]
+    public estado: string
     ){}
 }

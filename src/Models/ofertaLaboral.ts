@@ -10,8 +10,8 @@ export class ofertaLaboral {
     public descripcion: string,
     public cargo: string,
     public region: string,
-    public tipo: string[],
-    public estado: string[],
+    public tipo: string,
+    public estado: string,
     public empresa: Empresa,
     public postulaciones: Postulacion
     ){}

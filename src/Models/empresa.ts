@@ -7,6 +7,6 @@ export class Empresa {
     public id: number,
     public nombre: string,
     public sitioWeb: string,
-    public tipo: string[]
+    public tipo: string
     ){}
 }
