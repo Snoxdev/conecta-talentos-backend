@@ -9,7 +9,7 @@ constructor (private readonly estudianteServices:EstudiantesService){
     
 }
 
-@Post("estudiantes")
+@Post()
 nuevoEstudiante(@Body() estudiante:Estudiante): void{
     this.estudianteServices.nuevoEstudiante(estudiante);
 }
@@ -20,7 +20,7 @@ obtenerEstudiantePorId( @Param("id") ide: number): Estudiante {
     return this.estudianteServices.obtenerEstudiantePorId(ide);
 }
 
-@Get("estudiantes")
+@Get()
 obtenerEstudiante(): Estudiante[] {
     return this.estudianteServices.obtenerEstudiante();
 }

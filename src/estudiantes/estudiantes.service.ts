@@ -5,13 +5,26 @@ import { Estudiante } from "src/Models/estudiantes"
 export class EstudiantesService {
 
     private estudiantes: Estudiante[] = [];
+    private email: string[] = [];
 
   
-    nuevoEstudiante( @Body() estudiante:Estudiante): void{
-        this.estudiantes.push(estudiante);
+    nuevoEstudiante(estudiante:Estudiante): void{
+        if(this.estudiantes.length < 1){
+            estudiante.id = this.estudiantes.length + 1;
+            this.estudiantes.push(estudiante);
+            this.email.push(estudiante.email);
+        }else{
+          if(this.email.indexOf(estudiante.email) == -1){
+            estudiante.id = this.estudiantes.length + 1;
+            this.estudiantes.push(estudiante);
+            this.email.push(estudiante.email);
+          }else{
+            console.log("Este email ya se encuentra registrado");
+          }
+        }
     }    
     
-    obtenerEstudiantePorId( @Param("id") ide: number): Estudiante {
+    obtenerEstudiantePorId(ide: number): Estudiante {
         for(let i = 0; i < this.estudiantes.length; i++){
             if(this.estudiantes[i].id == ide){
                 return this.estudiantes[i];
@@ -25,10 +38,15 @@ export class EstudiantesService {
     }
     
     
-    borrarEstudiante( @Param("id") ide: number): void {
+    borrarEstudiante(ide: number): void {
         for(let i = 0; i < this.estudiantes.length; i++){
             if(this.estudiantes[i].id == ide){
-                this.estudiantes.splice(i - 1, 1);
+                this.estudiantes.splice(i, 1);
+                this.email.splice(i, 1);
+                for(let j = ide; j <= this.estudiantes.length; j++){
+                    this.estudiantes[j-1].id = j;
+
+                }
             }
         }
     }
