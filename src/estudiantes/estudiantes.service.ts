@@ -33,7 +33,7 @@ export class EstudiantesService {
         return null;
     }
     
-    obtenerEstudiante(): Estudiante[] {
+    obtenerEstudiantes(): Estudiante[] {
         return this.estudiantes;
     }
     

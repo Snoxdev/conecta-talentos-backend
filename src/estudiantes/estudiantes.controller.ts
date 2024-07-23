@@ -21,8 +21,8 @@ obtenerEstudiantePorId( @Param("id") ide: number): Estudiante {
 }
 
 @Get()
-obtenerEstudiante(): Estudiante[] {
-    return this.estudianteServices.obtenerEstudiante();
+obtenerEstudiantes(): Estudiante[] {
+    return this.estudianteServices.obtenerEstudiantes();
 }
 
 @Delete(":id")
